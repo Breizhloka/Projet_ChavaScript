@@ -7,11 +7,22 @@
   <title>Formulaire</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
+<!--
+
+- réussir à détecter le clic / validation du formulaire
+- récupérer la valeur d'un champs à tester
+- valider le test (par exemple : non vide)
+- réussir à faire une fonction valable pour n'importe quel champ
+- décliner pour tous les tests
+
+-->
+
 <body>
   <section>
-    <form name="fromulaire">
+    <form name="fromulaire" onsubmit="alert('Fromulaire envoyé !')">
       <label for="nom">Nom</label>
-      <input type="text" class="intext" name="nom" placeholder="ex : Neymar"> </br>
+      <input type="text" class="intext" name="nom" id="nom" placeholder="ex : Neymar"> </br>
 
       <label for="prenom">Prénom</label>
       <input type="text" class="intext" name="prenom" placeholder="ex : Jean"> </br>
@@ -41,13 +52,16 @@
       <input class="btn" type="submit" value="Envoyer" id="btn_submit">
     </form>
 
+<!-- Intégration de mon Javascript -->
     <script type="text/javascript">
-  
+
 
 
     </script>
+
   </section>
 
+<!-- Intégration de la feuille de script -->
   <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
