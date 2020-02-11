@@ -22,7 +22,7 @@
   <section>
     <form name="fromulaire" onsubmit="alert('Fromulaire envoyé !')">
       <label for="nom">Nom</label>
-      <input type="text" class="intext" name="nom" id="nom" onblur="recup_val()" placeholder="ex : Neymar"> </br>
+      <input type="text" class="intext" name="nom" id="nom" onblur="champ_non_vide()" placeholder="ex : Neymar"> </br>
 
       <label for="prenom">Prénom</label>
       <input type="text" class="intext" name="prenom" placeholder="ex : Jean"> </br>
@@ -54,8 +54,14 @@
 
 <!-- Intégration de mon Javascript -->
     <script type="text/javascript">
-    function recup_val() {
+
+    function champ_non_vide() {
       console.log(document.getElementById('nom').value);
+      var champ_valide = true;
+      console.log(champ_valide)
+      champ_valide = (document.getElementById('nom').value.length > 0);
+      console.log(champ_valide)
+      return champ_valide;
     }
 
 
