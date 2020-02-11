@@ -22,10 +22,10 @@
   <section>
     <form name="fromulaire" onsubmit="alert('Fromulaire envoyé !')">
       <label for="nom">Nom</label>
-      <input type="text" class="intext" name="nom" id="nom" onblur="champ_non_vide()" placeholder="ex : Neymar"> </br>
+      <input type="text" class="intext" name="nom" id="nom" onblur="champ_non_vide(this)" placeholder="ex : Neymar"> </br>
 
       <label for="prenom">Prénom</label>
-      <input type="text" class="intext" name="prenom" placeholder="ex : Jean"> </br>
+      <input type="text" class="intext" name="prenom" onblur="champ_non_vide(this)" placeholder="ex : Jean"> </br>
 
       <label for="civilite">Civilité</label>
       <select class="intext" name="civilite"> </br>
@@ -35,19 +35,19 @@
       </select> </br>
 
       <label for="phone">Numéro de téléphone</label>
-      <input type="text" class="intext" name="phone" placeholder=""> </br>
+      <input type="text" class="intext" name="phone" onblur="champ_non_vide(this)" placeholder=""> </br>
 
       <label for="adresse">Adresse</label>
-      <input type="text" class="intext" name="adresse" placeholder=""> </br>
+      <input type="text" class="intext" name="adresse" onblur="champ_non_vide(this)" placeholder=""> </br>
 
       <label for="code">Code postal</label>
-      <input type="text" class="intext" name="code" placeholder=""> </br>
+      <input type="text" class="intext" name="code" onblur="champ_non_vide(this)" placeholder=""> </br>
 
       <label for="ville">Ville</label>
-      <input type="text" class="intext" name="ville" placeholder=""> </br>
+      <input type="text" class="intext" name="ville" onblur="champ_non_vide(this)" placeholder=""> </br>
 
       <label for="mail">Adresse mail</label>
-      <input type="text" class="intext" name="mail" placeholder=""> </br>
+      <input type="text" class="intext" name="mail" onblur="champ_non_vide(this)" placeholder=""> </br>
 
       <input class="btn" type="submit" value="Envoyer" id="btn_submit">
     </form>
@@ -55,12 +55,11 @@
 <!-- Intégration de mon Javascript -->
     <script type="text/javascript">
 
-    function champ_non_vide() {
-      console.log(document.getElementById('nom').value);
+    function champ_non_vide(champ) {
       var champ_valide = true;
-      console.log(champ_valide)
-      champ_valide = (document.getElementById('nom').value.length > 0);
-      console.log(champ_valide)
+      console.log(champ_valide);
+      champ_valide = (champ.value.length > 0);
+      console.log(champ_valide);
       return champ_valide;
     }
 
