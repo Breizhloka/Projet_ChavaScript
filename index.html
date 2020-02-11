@@ -35,7 +35,7 @@
       </select> </br>
 
       <label for="phone">Numéro de téléphone</label>
-      <input type="text" class="intext" name="phone" onblur="champ_non_vide(this)" placeholder=""> </br>
+      <input type="text" class="intext" name="phone" onblur="verif_phone(this)" placeholder=""> </br>
 
       <label for="adresse">Adresse</label>
       <input type="text" class="intext" name="adresse" onblur="champ_non_vide(this)" placeholder=""> </br>
@@ -55,14 +55,18 @@
 <!-- Intégration de mon Javascript -->
     <script type="text/javascript">
 
+//fonction CHAMP NON VIDE
     function champ_non_vide(champ) {
       var champ_valide = true;
-      console.log(champ_valide);
       champ_valide = (champ.value.length > 0);
-      console.log(champ_valide);
       return champ_valide;
     }
 
+    function verif_phone(champ) {
+      var phone_valide = true;
+      phone_valide = (champ.value.length == 10);
+      return phone_valide;
+    }
 
     </script>
 
