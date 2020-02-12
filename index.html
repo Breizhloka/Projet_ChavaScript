@@ -35,7 +35,7 @@
       </select> </br>
 
       <label for="phone">Numéro de téléphone</label>
-      <input type="text" class="intext" name="phone" onblur="verif_phone(this)" placeholder=""> </br>
+      <input type="text" class="intext" name="phone" onblur="verif_phone(this);champ_non_vide(this);" placeholder=""> </br>
 
       <label for="adresse">Adresse</label>
       <input type="text" class="intext" name="adresse" onblur="champ_non_vide(this)" placeholder=""> </br>
@@ -62,10 +62,18 @@
       return champ_valide;
     }
 
+//fonction VERIF TEL (composé de 10 caractères)
     function verif_phone(champ) {
       var phone_valide = true;
       phone_valide = (champ.value.length == 10);
       return phone_valide;
+    }
+
+//fonction VERIF CODE POSTAL (composé de 5 caractères)
+    function verif_cp(champ) {
+      var cp_valide = true;
+      cp_valide = (champ.value.length == 5);
+      return cp_valide;
     }
 
     </script>
