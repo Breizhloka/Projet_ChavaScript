@@ -20,7 +20,7 @@
 
 <body>
   <section>
-    <form name="fromulaire" onsubmit="alert('Fromulaire envoyé !')">
+    <form name="fromulaire" onsubmit="return form_ok()">
       <label for="nom">Nom</label>
       <input type="text" class="intext" name="nom" id="nom" onblur="champ_non_vide(this)" placeholder="ex : Neymar"> </br>
 
@@ -35,13 +35,13 @@
       </select> </br>
 
       <label for="phone">Numéro de téléphone</label>
-      <input type="text" class="intext" name="phone" onblur="verif_phone(this);champ_non_vide(this);" placeholder=""> </br>
+      <input type="text" class="intext" name="phone" onblur="verif_taille(this, 10);champ_non_vide(this);" placeholder=""> </br>
 
       <label for="adresse">Adresse</label>
       <input type="text" class="intext" name="adresse" onblur="champ_non_vide(this)" placeholder=""> </br>
 
       <label for="code">Code postal</label>
-      <input type="text" class="intext" name="code" onblur="champ_non_vide(this)" placeholder=""> </br>
+      <input type="text" class="intext" name="code" onblur="verif_taille(this, 5);champ_non_vide(this)" placeholder=""> </br>
 
       <label for="ville">Ville</label>
       <input type="text" class="intext" name="ville" onblur="champ_non_vide(this)" placeholder=""> </br>
@@ -57,23 +57,21 @@
 
 //fonction CHAMP NON VIDE
     function champ_non_vide(champ) {
-      var champ_valide = true;
+      var champ_valide = false;
       champ_valide = (champ.value.length > 0);
       return champ_valide;
     }
 
-//fonction VERIF TEL (composé de 10 caractères)
-    function verif_phone(champ) {
-      var phone_valide = true;
-      phone_valide = (champ.value.length == 10);
-      return phone_valide;
+//fonction VERIF TEL & CODE POSTAL (composé de 10 ou 5 caractères)
+    function verif_taille(champ, taille) {
+      var taille_valide = false;
+      taille_valide = (champ.value.length == taille);
+      return taille_valide;
     }
 
-//fonction VERIF CODE POSTAL (composé de 5 caractères)
-    function verif_cp(champ) {
-      var cp_valide = true;
-      cp_valide = (champ.value.length == 5);
-      return cp_valide;
+//mega fonction VERIF GLOBALE
+    function form_ok() {
+
     }
 
     </script>
