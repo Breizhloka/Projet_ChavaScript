@@ -25,7 +25,7 @@
       <input type="text" class="intext" name="nom" id="nom" onblur="champ_non_vide(this)" placeholder="ex : Neymar"> </br>
 
       <label for="prenom">Prénom</label>
-      <input type="text" class="intext" name="prenom" onblur="champ_non_vide(this)" placeholder="ex : Jean"> </br>
+      <input type="text" class="intext" name="prenom" id="prenom" onblur="champ_non_vide(this)" placeholder="ex : Jean"> </br>
 
       <label for="civilite">Civilité</label>
       <select class="intext" name="civilite"> </br>
@@ -35,19 +35,19 @@
       </select> </br>
 
       <label for="phone">Numéro de téléphone</label>
-      <input type="text" class="intext" name="phone" onblur="verif_taille(this, 10);champ_non_vide(this);" placeholder=""> </br>
+      <input type="text" class="intext" name="phone" id="phone" onblur="verif_taille(this, 10);champ_non_vide(this);" placeholder=""> </br>
 
       <label for="adresse">Adresse</label>
-      <input type="text" class="intext" name="adresse" onblur="champ_non_vide(this)" placeholder=""> </br>
+      <input type="text" class="intext" name="adresse" id="adresse" onblur="champ_non_vide(this)" placeholder=""> </br>
 
       <label for="code">Code postal</label>
-      <input type="text" class="intext" name="code" onblur="verif_taille(this, 5);champ_non_vide(this)" placeholder=""> </br>
+      <input type="text" class="intext" name="code" id="code" onblur="verif_taille(this, 5);champ_non_vide(this)" placeholder=""> </br>
 
       <label for="ville">Ville</label>
-      <input type="text" class="intext" name="ville" onblur="champ_non_vide(this)" placeholder=""> </br>
+      <input type="text" class="intext" name="ville" id="ville" onblur="champ_non_vide(this)" placeholder=""> </br>
 
       <label for="mail">Adresse mail</label>
-      <input type="text" class="intext" name="mail" onblur="champ_non_vide(this)" placeholder=""> </br>
+      <input type="text" class="intext" name="mail" id="mail" onblur="form_ok()" placeholder=""> </br>
 
       <input class="btn" type="submit" value="Envoyer" id="btn_submit">
     </form>
@@ -63,15 +63,25 @@
     }
 
 //fonction VERIF TEL & CODE POSTAL (composé de 10 ou 5 caractères)
-    function verif_taille(champ, taille) {
-      var taille_valide = false;
-      taille_valide = (champ.value.length == taille);
-      return taille_valide;
-    }
+      function verif_taille(champ, taille) {
+        var taille_valide = false;
+        taille_valide = (champ.value.length == taille);
+        return taille_valide;
+      }
 
 //mega fonction VERIF GLOBALE
     function form_ok() {
+      var nom = champ_non_vide (document.getElementById('nom'));
+      var prenom = champ_non_vide (document.getElementById('prenom'));
+      var phone = champ_non_vide (document.getElementById('phone'));
+      var adresse = champ_non_vide (document.getElementById('adresse'));
+      var code = champ_non_vide (document.getElementById('code'));
+      var ville = champ_non_vide (document.getElementById('ville'));
+      var mail = champ_non_vide (document.getElementById('mail'));
+      var taille_phone = verif_taille (document.getElementById('phone'), 10);
+      var taille_code = verif_taille (document.getElementById('code'), 5);
 
+      return nom && prenom && phone && adresse && code && ville && mail && taille_phone && taille_code;
     }
 
     </script>
