@@ -10,11 +10,14 @@
 
 <!--
 
-- réussir à détecter le clic / validation du formulaire
-- récupérer la valeur d'un champs à tester
-- valider le test (par exemple : non vide)
-- réussir à faire une fonction valable pour n'importe quel champ
-- décliner pour tous les tests
+- réussir à détecter le clic / validation du formulaire OK
+- récupérer la valeur d'un champs à tester OK
+- valider le test (par exemple : non vide) OK
+- réussir à faire une fonction valable pour n'importe quel champ OK
+- décliner pour tous les tests OK
+- valider le formulaire OK
+- affichage dynamique des zones (nom JF)
+- zone récap des erreurs / affichage dynamique des messages à côté des champs
 
 -->
 
@@ -28,11 +31,16 @@
       <input type="text" class="intext" name="prenom" id="prenom" onblur="champ_non_vide(this)" placeholder="ex : Jean"> </br>
 
       <label for="civilite">Civilité</label>
-      <select class="intext" name="civilite"> </br>
+      <select class="intext" name="civilite" id="civilite" onblur="nom_jeune_fille(this)"> </br>
         <option value="monsieur">Monsieur</option>
         <option value="madame">Madame</option>
         <option value="non-binaire">Non-binaire</option>
       </select> </br>
+
+      <div id="bloc_nom_JF">
+        <label for="nom_JF">Nom de Jeune fille</label>
+        <input type="text" class="intext" name="nom_JF" id="nom_JF" onblur="champ_non_vide(this)" placeholder=""> </br>
+      </div>
 
       <label for="phone">Numéro de téléphone</label>
       <input type="text" class="intext" name="phone" id="phone" onblur="verif_taille(this, 10);champ_non_vide(this);" placeholder=""> </br>
@@ -81,9 +89,23 @@
       var taille_phone = verif_taille (document.getElementById('phone'), 10);
       var taille_code = verif_taille (document.getElementById('code'), 5);
 
-      return nom && prenom && phone && adresse && code && ville && mail && taille_phone && taille_code;
+      if (document.getElementById('civilite').value == 'madame') {
+        var nom_JF = champ_non_vide (document.getElementById('nom_JF'));
+        return nom && prenom && phone && adresse && code && ville && mail && taille_phone && taille_code && nom_JF;
+      } else {
+        return nom && prenom && phone && adresse && code && ville && mail && taille_phone && taille_code;
+      }
     }
 
+//fonction AFFICHAGE NOM DE JEUNE FILLE
+    function nom_jeune_fille(champ) {
+      if (document.getElementById('civilite').value == 'madame') {
+        document.getElementById('bloc_nom_JF').style.display = 'block';
+
+      } else {
+        document.getElementById('bloc_nom_JF').style.display = 'none';
+      }
+    }
     </script>
 
   </section>
