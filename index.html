@@ -16,7 +16,7 @@
 - réussir à faire une fonction valable pour n'importe quel champ OK
 - décliner pour tous les tests OK
 - valider le formulaire OK
-- affichage dynamique des zones (nom JF)
+- affichage dynamique des zones (nom JF) OK
 - zone récap des erreurs / affichage dynamique des messages à côté des champs
 
 -->
@@ -43,13 +43,13 @@
       </div>
 
       <label for="phone">Numéro de téléphone</label>
-      <input type="text" class="intext" name="phone" id="phone" onblur="verif_taille(this, 10);champ_non_vide(this);" placeholder=""> </br>
+      <input type="text" class="intext" name="phone" id="phone" onblur="verif_taille(this, 10)" placeholder=""> </br>
 
       <label for="adresse">Adresse</label>
       <input type="text" class="intext" name="adresse" id="adresse" onblur="champ_non_vide(this)" placeholder=""> </br>
 
       <label for="code">Code postal</label>
-      <input type="text" class="intext" name="code" id="code" onblur="verif_taille(this, 5);champ_non_vide(this)" placeholder=""> </br>
+      <input type="text" class="intext" name="code" id="code" onblur="verif_taille(this, 5)" placeholder=""> </br>
 
       <label for="ville">Ville</label>
       <input type="text" class="intext" name="ville" id="ville" onblur="champ_non_vide(this)" placeholder=""> </br>
@@ -63,17 +63,31 @@
 <!-- Intégration de mon Javascript -->
     <script type="text/javascript">
 
-//fonction CHAMP NON VIDE
+//fonction CHAMP NON VIDE + indication bordure rouge
     function champ_non_vide(champ) {
       var champ_valide = false;
       champ_valide = (champ.value.length > 0);
+
+       if (champ_valide == false) {
+        champ.style.border = '1px solid red';
+      } else {
+        champ.style.border = '';
+      }
+
       return champ_valide;
     }
 
-//fonction VERIF TEL & CODE POSTAL (composé de 10 ou 5 caractères)
+//fonction VERIF TEL & CODE POSTAL (composé de 10 ou 5 caractères) + indication bordure rouge
       function verif_taille(champ, taille) {
         var taille_valide = false;
         taille_valide = (champ.value.length == taille);
+
+        if (!taille_valide) {
+          champ.style.border = '1px solid red';
+        } else {
+          champ.style.border = '';
+        }
+
         return taille_valide;
       }
 
