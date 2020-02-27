@@ -100,11 +100,13 @@
 
     //fonction AFFICHAGE NOM DE JEUNE FILLE
         function nom_jeune_fille(champ) {
+          var style;
           if (document.getElementById('civilite').value == 'madame') {
-            document.getElementById('bloc_nom_JF').style.display = 'block';
+            style = 'block';
           } else {
-            document.getElementById('bloc_nom_JF').style.display = 'none';
+            style = 'none';
           }
+          document.getElementById('bloc_nom_JF').style.display = style;
         }
 
     //mega fonction VERIF GLOBALE
