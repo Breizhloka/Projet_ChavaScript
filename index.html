@@ -62,64 +62,70 @@
 
 <!-- Intégration de mon Javascript -->
     <script type="text/javascript">
+    //fonction CHAMP NON VIDE + indication bordure rouge
+        function champ_non_vide(champ) {
+          console.log(champ.name);
+          var champ_valide = false;
+          champ_valide = (champ.value.length > 0);
+          // ajout d'une bordure rouge en cas d'erreur
+           if (!champ_valide) {
+            champ.style.border = '1px solid red';
+            var erreur = document.createElement("span");
+            erreur.textContent = "Veuillez remplir le champ " + champ.name;
 
-//fonction CHAMP NON VIDE + indication bordure rouge
-    function champ_non_vide(champ) {
-      var champ_valide = false;
-      champ_valide = (champ.value.length > 0);
 
-       if (champ_valide == false) {
-        champ.style.border = '1px solid red';
-      } else {
-        champ.style.border = '';
-      }
 
-      return champ_valide;
-    }
+            champ.insertAdjacentHTML('afterbegin', erreur);
 
-//fonction VERIF TEL & CODE POSTAL (composé de 10 ou 5 caractères) + indication bordure rouge
-      function verif_taille(champ, taille) {
-        var taille_valide = false;
-        taille_valide = (champ.value.length == taille);
 
-        if (!taille_valide) {
-          champ.style.border = '1px solid red';
-        } else {
-          champ.style.border = '';
+
+          } else {
+            champ.style.border = '';
+          }
+          return champ_valide;
         }
 
-        return taille_valide;
-      }
+    //fonction VERIF TEL & CODE POSTAL (composé de 10 ou 5 caractères) + indication bordure rouge
+          function verif_taille(champ, taille) {
+            var taille_valide = false;
+            taille_valide = (champ.value.length == taille);
+            // ajout d'une bordure rouge en cas d'erreur
+            if (!taille_valide) {
+              champ.style.border = '1px solid red';
+            } else {
+              champ.style.border = '';
+            }
+            return taille_valide;
+          }
 
-//mega fonction VERIF GLOBALE
-    function form_ok() {
-      var nom = champ_non_vide (document.getElementById('nom'));
-      var prenom = champ_non_vide (document.getElementById('prenom'));
-      var phone = champ_non_vide (document.getElementById('phone'));
-      var adresse = champ_non_vide (document.getElementById('adresse'));
-      var code = champ_non_vide (document.getElementById('code'));
-      var ville = champ_non_vide (document.getElementById('ville'));
-      var mail = champ_non_vide (document.getElementById('mail'));
-      var taille_phone = verif_taille (document.getElementById('phone'), 10);
-      var taille_code = verif_taille (document.getElementById('code'), 5);
+    //fonction AFFICHAGE NOM DE JEUNE FILLE
+        function nom_jeune_fille(champ) {
+          if (document.getElementById('civilite').value == 'madame') {
+            document.getElementById('bloc_nom_JF').style.display = 'block';
+          } else {
+            document.getElementById('bloc_nom_JF').style.display = 'none';
+          }
+        }
 
-      if (document.getElementById('civilite').value == 'madame') {
-        var nom_JF = champ_non_vide (document.getElementById('nom_JF'));
-        return nom && prenom && phone && adresse && code && ville && mail && taille_phone && taille_code && nom_JF;
-      } else {
-        return nom && prenom && phone && adresse && code && ville && mail && taille_phone && taille_code;
-      }
-    }
+    //mega fonction VERIF GLOBALE
+        function form_ok() {
+          var nom = champ_non_vide (document.getElementById('nom'));
+          var prenom = champ_non_vide (document.getElementById('prenom'));
+          var phone = champ_non_vide (document.getElementById('phone'));
+          var adresse = champ_non_vide (document.getElementById('adresse'));
+          var code = champ_non_vide (document.getElementById('code'));
+          var ville = champ_non_vide (document.getElementById('ville'));
+          var mail = champ_non_vide (document.getElementById('mail'));
+          var taille_phone = verif_taille (document.getElementById('phone'), 10);
+          var taille_code = verif_taille (document.getElementById('code'), 5);
 
-//fonction AFFICHAGE NOM DE JEUNE FILLE
-    function nom_jeune_fille(champ) {
-      if (document.getElementById('civilite').value == 'madame') {
-        document.getElementById('bloc_nom_JF').style.display = 'block';
-
-      } else {
-        document.getElementById('bloc_nom_JF').style.display = 'none';
-      }
-    }
+          if (document.getElementById('civilite').value == 'madame') {
+            var nom_JF = champ_non_vide (document.getElementById('nom_JF'));
+            return nom && prenom && phone && adresse && code && ville && mail && taille_phone && taille_code && nom_JF;
+          } else {
+            return nom && prenom && phone && adresse && code && ville && mail && taille_phone && taille_code;
+          }
+        }
     </script>
 
   </section>
