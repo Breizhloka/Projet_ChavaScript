@@ -72,13 +72,7 @@
             champ.style.border = '1px solid red';
             var erreur = document.createElement("span");
             erreur.textContent = "Veuillez remplir le champ " + champ.name;
-
-
-
-            champ.insertAdjacentHTML('afterbegin', erreur);
-
-
-
+            champ.after(erreur);
           } else {
             champ.style.border = '';
           }
