@@ -62,25 +62,48 @@
 
 <!-- Intégration de mon Javascript -->
     <script type="text/javascript">
-    //fonction CHAMP NON VIDE + indication bordure rouge
+    /*/fonction CHAMP NON VIDE + indication bordure rouge
         function champ_non_vide(champ) {
-          console.log(champ.name);
           var champ_valide = false;
           champ_valide = (champ.value.length > 0);
           // ajout d'une bordure rouge en cas d'erreur
+          var erreur = document.createElement("span");
+          erreur.setAttribute("class", "erreur");
+          erreur.textContent = "Veuillez remplir le champ " + champ.name;
            if (!champ_valide) {
             champ.style.border = '1px solid red';
-            var erreur = document.createElement("span");
-            erreur.textContent = "Veuillez remplir le champ " + champ.name;
-
-
-
-            champ.insertAdjacentHTML('afterbegin', erreur);
-
-
-
+            champ.after(erreur);
           } else {
             champ.style.border = '';
+
+          }
+          return champ_valide;
+        } */
+
+        function champ_non_vide(champ) {
+          var champ_valide = false;
+          champ_valide = (champ.value.length > 0);
+          // ajout d'une bordure rouge en cas d'erreur
+          var erreur_active = false;
+          console.log(erreur_active);
+          var erreur = document.createElement("span");
+          erreur.setAttribute("class", "erreur");
+          erreur.textContent = "Veuillez remplir le champ " + champ.name;
+
+
+
+          switch (champ_valide, erreur_active) {
+            case false, true:
+             champ.style.border = '1px solid blue';
+             break;
+            case false, false:
+              champ.style.border = '1px solid red';
+              champ.after(erreur);
+              erreur_active = true;
+              console.log(erreur_active);
+              break;
+            default:
+              champ.style.border = '';
           }
           return champ_valide;
         }
@@ -100,11 +123,13 @@
 
     //fonction AFFICHAGE NOM DE JEUNE FILLE
         function nom_jeune_fille(champ) {
+          var display;
           if (document.getElementById('civilite').value == 'madame') {
-            document.getElementById('bloc_nom_JF').style.display = 'block';
+            display = 'block';
           } else {
-            document.getElementById('bloc_nom_JF').style.display = 'none';
+            display = 'none';
           }
+          document.getElementById('bloc_nom_JF').style.display = display;
         }
 
     //mega fonction VERIF GLOBALE

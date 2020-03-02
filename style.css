@@ -10,3 +10,8 @@ form {
 #bloc_nom_JF {
   display: none;
 }
+
+.erreur {
+  padding-left: 10px;
+  color: red;
+}
